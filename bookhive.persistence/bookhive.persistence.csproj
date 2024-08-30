@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="EntityConfigurations\" />
+    <None Remove="EntityConfigurations\Authors\" />
+    <None Remove="EntityConfigurations\Books\" />
+    <None Remove="EntityConfigurations\Customers\" />
+    <None Remove="EntityConfigurations\Orders\" />
+    <None Remove="Repositories\" />
+    <None Remove="Repositories\Authors\" />
+    <None Remove="Repositories\Books\" />
+    <None Remove="Repositories\Customers\" />
+    <None Remove="Repositories\Orders\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EntityConfigurations\" />
+    <Folder Include="EntityConfigurations\Authors\" />
+    <Folder Include="EntityConfigurations\Books\" />
+    <Folder Include="EntityConfigurations\Customers\" />
+    <Folder Include="EntityConfigurations\Orders\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Repositories\Authors\" />
+    <Folder Include="Repositories\Books\" />
+    <Folder Include="Repositories\Customers\" />
+    <Folder Include="Repositories\Orders\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.20">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.20">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\bookhive.domain\bookhive.domain.csproj" />
+  </ItemGroup>
+</Project>
