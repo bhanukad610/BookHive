@@ -1,5 +1,6 @@
 ﻿using bookhive.persistence;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,21 +11,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//builder.Services.AddDbContext<BookHiveDbContext>(options =>
+//    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddDbContext<BookHiveDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-
-var host = new HostBuilder()
-    .ConfigureServices(services =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"), builder =>
     {
-        services.AddDbContext<BookHiveDbContext>(options =>
-        {
-            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
-        });
-    })
-    .Build();
-
-host.Run();
+        builder.MigrationsAssembly("bookhive.api");
+    });
+});
 
 
 var app = builder.Build();
